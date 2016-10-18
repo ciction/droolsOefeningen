@@ -1,0 +1,46 @@
+//the namespace for rules
+package com.sample
+ 
+//import facts
+import com.sample.DroolsTest.Message;
+ 
+ 
+ //rule definition
+ 
+ /*
+ syntax examples
+ ------------------------
+ 
+ -	Account (balance == 200) --> conditon
+ 
+ -	Assign models (classes) to variable -->  $account : Account( )
+ 
+ */
+rule "Hello World"
+    when
+        m : Message( status == Message.HELLO, myMessage : message )
+    then
+        System.out.println( myMessage );
+        m.setMessage( "Goodbye cruel world" );
+        m.setStatus( Message.GOODBYE );
+        update( m );
+end
+
+rule "GoodBye"
+    when
+        Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println( myMessage );
+        m.setMesage( "This is the end" );
+        m.setStatus( Message.END );
+        update( m );
+
+end
+
+rule "End"
+    when
+        Message( status == Message.END, myMessage : message )
+    then
+        System.out.println( myMessage );
+        System.out.println( myMessage );
+end

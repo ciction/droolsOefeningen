@@ -1,0 +1,31 @@
+//created on: Oct 18, 2016
+package droolsexample
+
+//list any import classes here.
+import com.tutorial.ItemCity
+import java.math.BigDecimal;
+
+
+//declare any global variables here
+dialect "java"
+
+
+
+rule "Pune Medicine Item"
+
+    when
+        //conditions
+        item : ItemCity( purchaseCity == ItemCity.City.PUNE,  productType == ItemCity.ProductType.MEDICINES )
+    then
+        //actions
+
+end
+
+rule "Your Second Rule"
+    //include attributes such as "salience" here...
+    when
+        //conditions
+    then
+        //actions
+
+end
